@@ -3,3 +3,4 @@ project/.env
 virt
 
 fruitable-1.0.0
+#'company_name': getattr(general_info,'company_name', '')

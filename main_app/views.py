@@ -7,10 +7,10 @@ def index(request):
     title = Title.objects.first()
     downbase = Downbase.objects.first()
     context={
-        'address': heading.address,
-        'email': heading.email,
-        'title': title.title,
-        'social_handle': downbase.social_handle
+        'address': getattr(heading,'address','' ),
+        'email': getattr(heading,'email',''),
+        'title': getattr(title,'title',''),
+        'social_handle': getattr(downbase,'social_handle','')
     }
     return render(request,'pages/index.html',context)
 def shop(request):
@@ -18,9 +18,9 @@ def shop(request):
     title = Title.objects.first()
     downbase = Downbase.objects.first()
     context={
-        'address': heading.address,
-        'email': heading.email,
-        'title': title.title,
-        'social_handle': downbase.social_handle
+        'address': getattr(heading,'address','' ),
+        'email': getattr(heading,'email',''),
+        'title': getattr(title,'title',''),
+        'social_handle': getattr(downbase,'social_handle','')
     }
     return render(request,'pages/shop.html',context)
