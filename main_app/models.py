@@ -16,5 +16,17 @@ class Downbase(models.Model):
     social_handle = models.URLField()
     def __str__(self):
         return self.social_handle
-    #username: bsam
-    #password: bsam1234
+    
+class Veggie(models.Model):
+    company_name = models.CharField(max_length=50)
+    todo = models.CharField(max_length=100)
+    percent = models.CharField(max_length=50)
+    def __str__(self):
+        return self.company_name
+    
+class Logistic(models.Model):
+    icon= models.CharField(max_length=100)
+    mode= models.CharField(max_length=100)
+    content= models.CharField(max_length=100)
+    def __str__(self):
+        return self.mode

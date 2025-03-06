@@ -1,16 +1,22 @@
 from django.shortcuts import render
-from .models import Heading,Title,Downbase
+from .models import Heading,Title,Downbase,Veggie,Logistic
 
 # Create your views here.
 def index(request):
     heading = Heading.objects.first()
     title = Title.objects.first()
     downbase = Downbase.objects.first()
+    veggie = Veggie.objects.first()
+    logistic = Logistic.objects.all()
     context={
         'address': getattr(heading,'address','' ),
         'email': getattr(heading,'email',''),
         'title': getattr(title,'title',''),
-        'social_handle': getattr(downbase,'social_handle','')
+        'social_handle': getattr(downbase,'social_handle',''),
+        'company_name': getattr(veggie,'company_name',''),
+        'todo': getattr(veggie,'todo',''),
+        'percent': getattr(veggie,'percent',''),
+        "logistic": logistic,
     }
     return render(request,'pages/index.html',context)
 def shop(request):
