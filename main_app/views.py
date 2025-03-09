@@ -1,21 +1,21 @@
 from django.shortcuts import render
-from .models import Heading,Title,Downbase,Logistic
+from .models import Heading,Title,Downbase,Logistic,Vegie
 
 # Create your views here.
 def index(request):
     heading = Heading.objects.first()
     title = Title.objects.first()
     downbase = Downbase.objects.first()
-    # veggie = Veggie.objects.first()
+    vegie = Vegie.objects.first()
     logistic = Logistic.objects.all()
     context={
         'address': getattr(heading,'address','' ),
         'email': getattr(heading,'email',''),
         'title': getattr(title,'title',''),
         'social_handle': getattr(downbase,'social_handle',''),
-        # 'company_name': getattr(veggie,'company_name',''),
-        # 'todo': getattr(veggie,'todo',''),
-        # 'percent': getattr(veggie,'percent',''),
+        'name': getattr(vegie,'name',''),
+        'offer': getattr(vegie,'offer',''),
+        'rate': getattr(vegie,'rate',''),
         "logistic": logistic,
     }
     return render(request,'pages/index.html',context)

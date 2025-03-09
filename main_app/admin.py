@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Heading,Title,Downbase,Logistic
+from .models import Heading,Title,Downbase,Logistic,Vegie
 # Register your models here.
 
 
@@ -22,11 +22,11 @@ class DownbaseAdmin(admin.ModelAdmin):
         'social_handle'
     ]
 
-# @admin.register(Veggie)
-# class VeggieAdmin(admin.ModelAdmin):
-#     list_display=[
-#         'company_name'
-#     ]
+@admin.register(Vegie)
+class VegieAdmin(admin.ModelAdmin):
+    list_display=[
+        'name'
+    ]
 
 @admin.register(Logistic)
 class LogisticAdmin(admin.ModelAdmin):
