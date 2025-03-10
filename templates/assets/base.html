@@ -74,6 +74,7 @@
                                 </div>
                             </div>
                             <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                            <a href="{% url 'register' %}" class="nav-item nav-link">Login</a>
                         </div>
                         <div class="d-flex m-3 me-0">
                             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
@@ -153,9 +154,9 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-item">
                             <h4 class="text-light mb-3">Contact</h4>
-                            <p>Address: 1429 Netus Rd, NY 48247</p>
-                            <p>Email: Example@gmail.com</p>
-                            <p>Phone: +0123 4567 8910</p>
+                            <p>Address: {{address}}</p>
+                            <p>Email: {{email}}</p>
+                            <p>Phone: +234 903 053 754 1</p>
                             <p>Payment Accepted</p>
                             <img src="{% static 'img/payment.png' %}" class="img-fluid" alt="">
                         </div>

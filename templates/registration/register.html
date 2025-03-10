@@ -1,0 +1,12 @@
+<div class="content_section col-md-8 col-md-offset-2">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+            {{form}}
+        </fieldset>
+        <center>
+            <button>Sign Up</button>
+        </center>
+        <div><a href="{% url 'login' %}">alreay have an account</a></div>
+    </form>
+</div>

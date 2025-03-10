@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Heading,Title,Downbase,Logistic,Vegie
+from . forms import UserRegristrationForm,UserLoginForm
+from django.contrib.auth.views import LoginView
+from django.contrib import messages
+from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
 def index(request):
@@ -102,3 +106,33 @@ def contact(request):
         'social_handle': getattr(downbase,'social_handle','')
     }
     return render(request, 'pages/contact.html', context)
+
+def register(request):
+    if request.method == 'POST':
+        form =UserRegristrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserRegristrationForm()
+        return render(request, 'registration/register.html', {'form': form})
+    return render(request, 'pages/contact.html')
+    
+def login(request):
+    form = UserLoginForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            username= form.cleaned_data.get('email')
+            password= form.cleaned_data.get('password')
+            user = authenticate(request, username = username, password = password)
+
+
+            if user is not None:
+                login(request, user)
+                messages.success(request, f'welcome {username}!')
+                return redirect('land')
+            else:
+                messages.info("Account does not exist, please register")
+        else:
+            form= UserLoginForm()
+    return render(request, 'registration/login.html', {'form': form})
