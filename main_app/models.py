@@ -30,3 +30,9 @@ class Logistic(models.Model):
     content= models.CharField(max_length=100)
     def __str__(self):
         return self.mode
+    
+class Testimony(models.Model):
+    testimony= models.CharField(max_length=200)
+    image_testimony = models.ImageField(upload_to='img/')
+    testimony_name= models.CharField(max_length=100)
+    profession= models.CharField(max_length=100)

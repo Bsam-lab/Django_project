@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Heading,Title,Downbase,Logistic,Vegie
+from .models import Heading,Title,Downbase,Logistic,Vegie,Testimony
 from . forms import UserRegristrationForm,UserLoginForm
 from django.contrib.auth.views import LoginView
 from django.contrib import messages
@@ -12,6 +12,7 @@ def index(request):
     downbase = Downbase.objects.first()
     vegie = Vegie.objects.first()
     logistic = Logistic.objects.all()
+    testimony = Testimony.objects.all()
     context={
         'address': getattr(heading,'address','' ),
         'email': getattr(heading,'email',''),
@@ -21,6 +22,7 @@ def index(request):
         'offer': getattr(vegie,'offer',''),
         'rate': getattr(vegie,'rate',''),
         "logistic": logistic,
+        'testimony': testimony
     }
     return render(request,'pages/index.html',context)
 def shop(request):
@@ -116,7 +118,7 @@ def register(request):
     else:
         form = UserRegristrationForm()
         return render(request, 'registration/register.html', {'form': form})
-    return render(request, 'pages/contact.html')
+    return render(request, 'registration/welcome.html')
     
 def login(request):
     form = UserLoginForm(request.POST)
